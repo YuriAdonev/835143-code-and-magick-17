@@ -35,9 +35,9 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillText(Math.floor(times[j]).toString(), offsetBar, 240 - heightBar);
     ctx.fillText(names[j], offsetBar, 260);
 
-    ctx.fillStyle = 'blue';
+    ctx.fillStyle = 'rgba(0, 0,' + Math.floor(Math.random() * 255) + ' , 1)';
     if (names[j] === 'Вы') {
-      ctx.fillStyle = 'red';
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     }
     ctx.fillRect(offsetBar, 245 - heightBar, 40, heightBar);
 
