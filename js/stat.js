@@ -25,7 +25,7 @@ function renderWinMessage(ctx) {
 }
 
 function getMaxValue(arr) {
-  var maxValue = 0;
+  var maxValue = arr[0];
 
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] > maxValue) {
