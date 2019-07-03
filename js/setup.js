@@ -15,10 +15,6 @@ function showSetup() {
   setupWindow.classList.remove('hidden');
 }
 
-function closeSetup() {
-  setupWindow.classList.add('hidden');
-}
-
 function getRandomValue(arr) {
   var index = Math.floor(Math.random() * arr.length);
   return arr[index];
@@ -50,10 +46,6 @@ function renderSimilarCharacters() {
 
 function showSimilarWizards() {
   document.querySelector('.setup-similar').classList.remove('hidden');
-}
-
-function hideSimilarWizards() {
-  document.querySelector('.setup-similar').classList.add('hidden');
 }
 
 showSetup();
