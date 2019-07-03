@@ -11,7 +11,13 @@ var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 var numberOfCharacters = 4;
 var characters = [];
 
-setupWindow.classList.remove('hidden');
+function showSetup() {
+  setupWindow.classList.remove('hidden');
+}
+
+function closeSetup() {
+  setupWindow.classList.add('hidden');
+}
 
 function getRandomValue(arr) {
   var index = Math.floor(Math.random() * arr.length);
@@ -19,6 +25,7 @@ function getRandomValue(arr) {
 }
 
 function generateCharacters(num) {
+  characters = [];
   for (var i = 0; i < num; i++) {
     var character = {
       name: getRandomValue(firstNames) + ' ' + getRandomValue(lastNames),
@@ -29,20 +36,28 @@ function generateCharacters(num) {
   }
 }
 
-function renderSimilarList(arr, temp) {
+function renderSimilarCharacters() {
   var fragment = document.createDocumentFragment();
-  for (var i = 0; i < arr.length; i++) {
-    var element = temp.cloneNode(true);
-    element.querySelector('.setup-similar-label').textContent = arr[i].name;
-    element.querySelector('.wizard-coat').style.fill = arr[i].coatColor;
-    element.querySelector('.wizard-eyes').style.fill = arr[i].eyesColor;
+  for (var i = 0; i < characters.length; i++) {
+    var element = similarWizardTemplate.cloneNode(true);
+    element.querySelector('.setup-similar-label').textContent = characters[i].name;
+    element.querySelector('.wizard-coat').style.fill = characters[i].coatColor;
+    element.querySelector('.wizard-eyes').style.fill = characters[i].eyesColor;
     fragment.appendChild(element);
   }
   document.querySelector('.setup-similar-list').appendChild(fragment);
 }
 
+function showSimilarWizards() {
+  document.querySelector('.setup-similar').classList.remove('hidden');
+}
+
+function hideSimilarWizards() {
+  document.querySelector('.setup-similar').classList.add('hidden');
+}
+
+showSetup();
+
 generateCharacters(numberOfCharacters);
-
-renderSimilarList(characters, similarWizardTemplate);
-
-document.querySelector('.setup-similar').classList.remove('hidden');
+renderSimilarCharacters();
+showSimilarWizards();
